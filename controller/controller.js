@@ -218,12 +218,12 @@ export async function getRTopics(req, res) {
 
 export async function storeResult(req, res) {
   try {
-    const { rollNumber, studentName, topic, point, easy, medium, hard } = req.body;
-    if (!rollNumber || !studentName || !topic || point === undefined || easy === undefined || medium === undefined || hard === undefined) {
+    const { rollNumber, studentName, topic, point, easy, medium, hard ,verdict} = req.body;
+    if (!rollNumber || !studentName || !topic || point === undefined || easy === undefined || medium === undefined || hard === undefined || !verdict) {
       return res.status(400).json({ error: 'Invalid data provided' });
     }
 
-    const result = new Results({ rollNumber, studentName, topic, point, easy, medium, hard });
+    const result = new Results({ rollNumber, studentName, topic, point, easy, medium, hard,verdict });
     await result.save();
     res.status(201).json({ msg: 'Result saved successfully' });
   } catch (error) {

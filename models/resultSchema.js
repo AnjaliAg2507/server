@@ -11,6 +11,7 @@ const resultModel = new Schema({
     easy: { type: Number, default: 0 },
     medium: { type: Number, default: 0 },
     hard: { type: Number, default: 0 },
+    verdict: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 
 });
